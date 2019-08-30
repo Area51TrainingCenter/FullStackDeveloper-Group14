@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let alumno of alumnos">
+      <td>{{alumno.nombre}}</td>
+      <td>{{alumno.apellido}}</td>
+    </tr>
+  </tbody>
+</table>
+<ul>
+  <li>
+    <a routerLink="/">Componente 1</a>
+  </li>
+  <li>
+    <a routerLink="/c2">Componente 2</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>
