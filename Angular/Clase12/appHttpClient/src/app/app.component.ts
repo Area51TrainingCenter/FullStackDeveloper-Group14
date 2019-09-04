@@ -17,6 +17,10 @@ export class AppComponent {
 
   ngOnInit() {
     this.listar()
+
+    this.alumnoService.onActualizar.subscribe(
+      () => this.listar()
+    )
   }
 
   listar() {

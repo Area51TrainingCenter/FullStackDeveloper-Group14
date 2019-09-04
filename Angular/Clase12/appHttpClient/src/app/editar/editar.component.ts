@@ -1,6 +1,6 @@
 import { AlumnoService } from '../alumno.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -13,10 +13,11 @@ export class EditarComponent implements OnInit {
   _id: string
   grupo: FormGroup
 
-  constructor(private activatedRoute: ActivatedRoute, private alumnoService: AlumnoService) { }
+  constructor(private activatedRoute: ActivatedRoute, private alumnoService: AlumnoService, private router: Router) { }
 
   ngOnInit() {
     this.grupo = new FormGroup({
+      _id: new FormControl(),
       nombre: new FormControl(null, Validators.required),
       apellido: new FormControl(null, Validators.required)
     })
@@ -30,8 +31,18 @@ export class EditarComponent implements OnInit {
           )
       }
     )
+  }
 
+  actualizar() {
+    this.alumnoService.modificar(this.grupo.getRawValue())
+      .subscribe(resp => {
+        this.alumnoService.onActualizar.next()
+        alert("Alumno actualizado")
+      })
+  }
 
+  volver() {
+    this.router.navigate(["/"])
   }
 
 }
