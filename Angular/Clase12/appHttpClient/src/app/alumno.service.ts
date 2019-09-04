@@ -14,7 +14,9 @@ export class AlumnoService {
     return this.http.get<Alumno[]>("http://clase.tibajodemanda.com/alumno").pipe(pluck("results"))
   }
 
-  detallar() { }
+  detallar(_id: string): Observable<Alumno> {
+    return this.http.get<Alumno>(`http://clase.tibajodemanda.com/alumno/${_id}`).pipe(pluck("result"))
+  }
 
   insertar() { }
 
