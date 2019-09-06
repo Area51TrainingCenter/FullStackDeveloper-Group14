@@ -11,7 +11,8 @@ import { AutenticacionGuard } from './guards/autenticacion.guard';
 import { Routes, RouterModule } from "@angular/router"
 import { AutorizacionGuard } from './guards/autorizacion.guard';
 import { AutorizacionRolGuard } from './guards/autorizacionRol.guard';
-import { ReactiveFormsModule } from "@angular/forms"
+import { ReactiveFormsModule } from "@angular/forms";
+import { NoAutenticadoComponent } from './no-autenticado/no-autenticado.component'
 const rutas: Routes = [
   { path: "", component: LoginComponent },
   {
@@ -20,7 +21,8 @@ const rutas: Routes = [
       { path: "nuevo", component: NuevoAlumnoComponent, canActivate: [AutorizacionRolGuard] },
       { path: "edicion", component: EdicionAlumnoComponent }
     ]
-  }
+  },
+  { path: "no-autenticado", component: NoAutenticadoComponent }
 ]
 
 @NgModule({
@@ -29,7 +31,8 @@ const rutas: Routes = [
     LoginComponent,
     ListadoAlumnoComponent,
     NuevoAlumnoComponent,
-    EdicionAlumnoComponent
+    EdicionAlumnoComponent,
+    NoAutenticadoComponent
   ],
   imports: [
     BrowserModule,

@@ -17,20 +17,22 @@ export class AutenticacionService {
     } */
 
   estaLogueado(): boolean {
-    return this.usuarioLogueado
+    return sessionStorage.getItem("usuarioEstado") ? true : false
   }
 
   login(username: string, password: string) {
     if (username == "dios" && password == "123") {
-      this.usuarioLogueado = true
+      //this.usuarioLogueado = true
+      sessionStorage.setItem("usuarioEstado", "true")
       this.router.navigate(["/alumno"])
       this.onCambioEstado.next(true)
     }
   }
 
   logout() {
+    sessionStorage.clear()
     this.router.navigate(["/"])
-    this.usuarioLogueado = false
+    //this.usuarioLogueado = false
     this.onCambioEstado.next(false)
   }
 }
