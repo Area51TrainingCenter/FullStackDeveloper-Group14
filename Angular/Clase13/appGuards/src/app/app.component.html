@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <nav *ngIf="logueado" class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" routerLink="/">Sistema</a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/alumno" tabindex="-1" aria-disabled="true">Listado</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/alumno/nuevo" tabindex="-1" aria-disabled="true">Nuevo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/alumno/edicion" tabindex="-1" aria-disabled="true">Edición</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <router-outlet></router-outlet>
+</div>
