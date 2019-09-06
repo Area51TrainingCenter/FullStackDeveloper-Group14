@@ -1,1 +1,15 @@
-<p>nuevo-alumno works!</p>
+<div class="row justify-content-center">
+  <form class="col-4" [formGroup]="grupo" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <input type="text" class="form-control" name="nombres" placeholder="Ingrese sus nombres"
+        formControlName="nombres">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="apellidos" placeholder="Ingrese sus apellidos"
+        formControlName="apellidos">
+    </div>
+    <div>
+      <button class="btn btn-success">Grabar</button>
+    </div>
+  </form>
+</div>

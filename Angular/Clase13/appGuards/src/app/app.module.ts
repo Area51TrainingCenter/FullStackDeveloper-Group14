@@ -13,12 +13,20 @@ import { AutorizacionGuard } from './guards/autorizacion.guard';
 import { AutorizacionRolGuard } from './guards/autorizacionRol.guard';
 import { ReactiveFormsModule } from "@angular/forms";
 import { NoAutenticadoComponent } from './no-autenticado/no-autenticado.component'
+import { DatosNoGuardadosGuard } from './guards/datos-no-guardados.guard';
+import { AlumnoResolve } from './servicios/alumno.resolve';
+import { HttpClientModule } from '@angular/common/http'
+
 const rutas: Routes = [
   { path: "", component: LoginComponent },
   {
     path: "alumno", canActivate: [AutenticacionGuard], children: [
-      { path: "", component: ListadoAlumnoComponent },
-      { path: "nuevo", component: NuevoAlumnoComponent, canActivate: [AutorizacionRolGuard] },
+      {
+        path: "", component: ListadoAlumnoComponent, resolve: {
+          listaAlumnos: AlumnoResolve
+        }
+      },
+      { path: "nuevo", component: NuevoAlumnoComponent, canActivate: [AutorizacionRolGuard], canDeactivate: [DatosNoGuardadosGuard] },
       { path: "edicion", component: EdicionAlumnoComponent }
     ]
   },
@@ -37,6 +45,7 @@ const rutas: Routes = [
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(rutas)
   ],
   providers: [],
