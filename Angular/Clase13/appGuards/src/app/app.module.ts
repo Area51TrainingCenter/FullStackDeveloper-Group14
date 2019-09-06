@@ -11,7 +11,7 @@ import { AutenticacionGuard } from './guards/autenticacion.guard';
 import { Routes, RouterModule } from "@angular/router"
 import { AutorizacionGuard } from './guards/autorizacion.guard';
 import { AutorizacionRolGuard } from './guards/autorizacionRol.guard';
-
+import { ReactiveFormsModule } from "@angular/forms"
 const rutas: Routes = [
   { path: "", component: LoginComponent },
   {
@@ -33,6 +33,7 @@ const rutas: Routes = [
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(rutas)
   ],
   providers: [],

@@ -13,6 +13,14 @@ export class AppComponent {
 
   ngOnInit() {
     this.logueado = this.autenticacionService.estaLogueado()
+
+    this.autenticacionService.onCambioEstado.subscribe(
+      estado => this.logueado = estado
+    )
+  }
+
+  logout() {
+    this.autenticacionService.logout()
   }
 
 
