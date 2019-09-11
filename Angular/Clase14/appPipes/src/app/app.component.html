@@ -11,3 +11,17 @@
 <p>
   {{texto | reducidor:100}}
 </p>
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Sinopsis</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let libro of libros">
+    <td>{{libro.titulo}}</td>
+    <td>{{libro.autor}}</td>
+    <td>{{libro.sinopsis}}</td>
+  </tr>
+</table>
