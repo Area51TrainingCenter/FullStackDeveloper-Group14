@@ -1,0 +1,13 @@
+<p>Fecha: {{fecha}}</p>
+<p>Fecha con formato por defecto: {{fecha | date}}</p>
+<p>Fecha con formato y en mayúsculas: {{fecha | date | uppercase}}</p>
+<!-- <p>Fecha con formato y en mayúsculas: {{fecha | uppercase | date}}</p> -->
+
+<p>Fecha corta: {{fecha | date:"shortDate"}}</p>
+<p>Hora larga: {{fecha | date:"longTime"}}</p>
+<p>Fecha personalizada: {{fecha | date:"dd/MM/yyyy"}}</p>
+<p>Fecha personalizada: {{fecha | date:"dd-MMM-yy"}}</p>
+<p>Fecha y hora personalizadas: {{fecha | date:"dd MMM, yyyy  hh:ss"}}</p>
+<p>
+  {{texto | reducidor:100}}
+</p>
