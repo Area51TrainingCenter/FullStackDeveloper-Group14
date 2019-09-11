@@ -17,4 +17,6 @@ export class AppComponent {
     { titulo: "El Sexto", autor: "José María Arguedas", sinopsis: "Narra la historia de un motín sangriento en la cárcel llamada 'El Sexto'" }, { titulo: "El Perfume", autor: "Patrick Suskind", sinopsis: "Es la historia de un asesino que mataba mujeres para robar su esencia y hacer el mejor perfume del mundo." }
   ]
 
+  busqueda = "mario"
+
 }

@@ -11,6 +11,9 @@
 <p>
   {{texto | reducidor:100}}
 </p>
+<!-- <input type="text" (input)="busqueda=$event.target.value"> -->
+<!-- <input type="text" [ngModel]="busqueda" (ngModelChange)="busqueda=$event"> -->
+<input type="text" [(ngModel)]="busqueda">
 <table>
   <thead>
     <tr>
@@ -19,7 +22,7 @@
       <th>Sinopsis</th>
     </tr>
   </thead>
-  <tr *ngFor="let libro of libros">
+  <tr *ngFor="let libro of libros | filtro: busqueda">
     <td>{{libro.titulo}}</td>
     <td>{{libro.autor}}</td>
     <td>{{libro.sinopsis}}</td>
