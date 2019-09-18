@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ListadoComponent as ListadoLibrosComponent } from './libros/listado/listado.component';
 import { AppRouting } from './app-routing.module';
+import { LibrosModule } from './libros/libros.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AppRouting } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRouting
+    AppRouting,
+    LibrosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
