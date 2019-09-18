@@ -6,6 +6,7 @@ import { ReducidorPipe } from './reducidor.pipe';
   declarations: [ReducidorPipe],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [ReducidorPipe]
 })
 export class CompartidoModule { }
