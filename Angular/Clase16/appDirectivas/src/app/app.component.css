@@ -1,0 +1,16 @@
+article {
+  width: 500px;
+  height: 400px;
+  border: 1px solid blue;
+  overflow-x:hidden;
+  overflow-y: scroll;
+}
+
+article.hover {
+  border: 1px dashed red
+}
+
+img {
+  width:100%;
+  max-width: 200px;
+}

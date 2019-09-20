@@ -1,1 +1,6 @@
 <div [mi-directiva]="colorX">Texto</div>
+
+<article appSeleccion (onArrastrando)="seleccion=$event" [ngClass]="{hover: seleccion}"
+  (onSeleccion)="archivosSeleccionados($event)">
+  <img [src]="imagen" *ngFor="let imagen of imagenSeleccionada">
+</article>
