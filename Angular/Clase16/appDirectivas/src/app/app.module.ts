@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
+import { AppDirectiva } from './app.directiva';
+import { SeleccionDirective } from './seleccion.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemComponent
+    ItemComponent,
+    AppDirectiva,
+    SeleccionDirective
   ],
   imports: [
     BrowserModule
