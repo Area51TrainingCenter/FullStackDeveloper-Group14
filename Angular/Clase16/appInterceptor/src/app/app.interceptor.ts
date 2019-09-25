@@ -8,6 +8,8 @@ export class AppInterceptor implements HttpInterceptor {
 
     let peticionClonada: HttpRequest<any> = req.clone({ headers: req.headers.append("Authorization", "bearer " + token) })
 
+    console.log("petición clonada")
+
     return next.handle(peticionClonada)
   }
 
