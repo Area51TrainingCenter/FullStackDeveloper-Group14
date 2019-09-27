@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const http = require("http");
-const usuarios_route_1 = require("./routes/usuarios.route");
+const routes_1 = require("./routes");
 let httpServer;
 let app = express();
 const inicializar = () => {
@@ -25,7 +25,8 @@ const inicializar = () => {
         app.use("/users", (req, res) => {
             res.json({ status: 409, message: "El usuario no tiene permiso" });
         });
-        app.use("/usuarios", usuarios_route_1.default);
+        app.use("/usuarios", routes_1.RouterUsuarios);
+        app.use("/alumnos", routes_1.RouterAlumnos);
         httpServer.listen(3000)
             .on("listening", () => resolve())
             .on("error", err => reject(err));

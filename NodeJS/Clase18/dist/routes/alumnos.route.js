@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
 const controllers_1 = require("../controllers");
+const express = require("express");
 const Router = express.Router();
-const controller = new controllers_1.ControllerUsuarios();
+const controller = new controllers_1.ControllerAlumnos();
 Router.get("/", controller.listar);
 Router.get("/detalle", controller.obtenerUno);
 Router.post("/", controller.insertar);
 Router.put("/", controller.actualizar);
 Router.delete("/", controller.eliminar);
 exports.default = Router;
-//# sourceMappingURL=usuarios.route.js.map
+//# sourceMappingURL=alumnos.route.js.map

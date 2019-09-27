@@ -10,4 +10,4 @@ Router.post("/", controller.insertar);
 Router.put("/", controller.actualizar);
 Router.delete("/", controller.eliminar);
 exports.default = Router;
-//# sourceMappingURL=usuarios.route.js.map
+//# sourceMappingURL=usuarios.route.1.js.map

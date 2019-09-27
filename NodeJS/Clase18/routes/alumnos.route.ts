@@ -1,8 +1,8 @@
+import { ControllerAlumnos } from '../controllers';
 import express = require("express")
-import { ControllerUsuarios } from "../controllers"
 
 const Router = express.Router()
-const controller = new ControllerUsuarios()
+const controller = new ControllerAlumnos()
 
 Router.get("/", controller.listar)
 Router.get("/detalle", controller.obtenerUno)

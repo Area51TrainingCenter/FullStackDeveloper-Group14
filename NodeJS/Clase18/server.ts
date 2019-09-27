@@ -1,7 +1,7 @@
 import express = require("express")
 import { Request } from "express"
 import * as http from "http"
-import RouterUsuarios from "./routes/usuarios.route"
+import { RouterAlumnos, RouterUsuarios } from "./routes"
 
 let httpServer: http.Server
 let app = express()
@@ -25,6 +25,7 @@ const inicializar = (): Promise<any> => {
 		})
 
 		app.use("/usuarios", RouterUsuarios)
+		app.use("/alumnos", RouterAlumnos)
 
 		httpServer.listen(3000)
 			.on("listening", () => resolve())
