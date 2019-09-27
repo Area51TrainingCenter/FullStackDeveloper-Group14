@@ -1,28 +1,30 @@
 import express = require("express")
+import { Request } from "express"
 import * as http from "http"
+import RouterUsuarios from "./routes/usuarios.route"
 
 let httpServer: http.Server
 let app = express()
+
+interface RequestApp extends Request {
+	estaAutenticado?: boolean
+}
 
 const inicializar = (): Promise<any> => {
 	return new Promise((resolve, reject) => {
 		httpServer = http.createServer(app)
 
-		app.get("/usuarios", (req, res) => {
-			res.type("application/json").send({ name: "Fullstack" })
+		app.use("/users", (req: RequestApp, res, next) => {
+			req.estaAutenticado = true
+			//res.json({ status: 401, message: "Usuario no logueado" })
+			next()
 		})
 
-		/* 		httpServer = http.createServer((req, res) => {
-					res.writeHead(200, { "content-type": "text/html" })
-					res.write("<h1>Hola, que tal</h1>")
-					res.write("<br>Todo ok por casa")
-					res.write("<br>La ruta es " + req.url)
-					res.write("<br>Método usado " + req.method)
-					if (req.url == "/usuarios" && req.method == "GET") {
-						res.write("<br>Lista de usuarios")
-					}
-					res.end("<p>Por favor abre la puerta</p>")
-				}) */
+		app.use("/users", (req, res) => {
+			res.json({ status: 409, message: "El usuario no tiene permiso" })
+		})
+
+		app.use("/usuarios", RouterUsuarios)
 
 		httpServer.listen(3000)
 			.on("listening", () => resolve())
