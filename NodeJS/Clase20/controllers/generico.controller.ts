@@ -17,7 +17,12 @@ class GenericoController {
 		res.type("application/json").send({ name: "Fullstack Detalle", ruta: req.url })
 	}
 
-	insertar(req, res) {
+	async insertar(req, res) {
+		const data = req.body
+
+		const usuario = new this.modelo(data)
+		await usuario.save()
+
 		res
 			.status(201)
 			.json({

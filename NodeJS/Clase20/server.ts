@@ -3,6 +3,7 @@ import { Request } from "express"
 import * as http from "http"
 import * as bodyParser from "body-parser"
 import { RouterAlumnos, RouterUsuarios } from "./routes"
+import { inicializarBaseDatos } from "./services/database.service";
 
 let httpServer: http.Server
 let app = express()
@@ -44,6 +45,15 @@ const iniciar = async () => {
 		console.log("Servidor ejecutándose")
 	} catch (error) {
 		console.log("Ocurrió un error")
+		console.log(error)
+	}
+
+	try {
+		console.log("Iniciando conexión con MongoDB")
+		await inicializarBaseDatos()
+		console.log("Conexión exitosa a MongoDB")
+	} catch (error) {
+		console.log("Error de conexión")
 		console.log(error)
 	}
 }
