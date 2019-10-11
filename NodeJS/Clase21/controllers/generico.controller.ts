@@ -10,7 +10,7 @@ class GenericoController {
 		this.eliminar = this.eliminar.bind(this)
 	}
 
-	async listar(req, res) {
+	async listar(req, res, next) {
 		const results = await this.modelo.find()
 
 		res
@@ -51,21 +51,30 @@ class GenericoController {
 			})
 	}
 
-	actualizar(req, res) {
+	async actualizar(req, res) {
+		const params = req.params // {_id: "dddd"}
+		const body = req.body
+
+		await this.modelo.findOneAndUpdate(params, body)
+
 		res
-			.status(201)
+			.status(httpStatus.CREATED)
 			.json({
-				status: 201,
-				message: "Usuario actualizado"
+				status: httpStatus.CREATED,
+				message: "Document updated"
 			})
 	}
 
-	eliminar(req, res) {
+	async eliminar(req, res) {
+		const params = req.params
+
+		await this.modelo.findOneAndRemove(params)
+
 		res
-			.status(201)
+			.status(httpStatus.CREATED)
 			.json({
-				status: 201,
-				message: "Usuario eliminado"
+				status: httpStatus.CREATED,
+				message: "Document deleted"
 			})
 	}
 }
