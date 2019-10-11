@@ -1,3 +1,5 @@
+import httpStatus = require("http-status-codes")
+
 class GenericoController {
 
 	constructor(private modelo: any) {
@@ -12,16 +14,26 @@ class GenericoController {
 		const results = await this.modelo.find()
 
 		res
-			.status(200)
+			.status(httpStatus.OK)
 			.json({
-				status: 200,
+				status: httpStatus.OK,
 				message: "List",
 				results
 			})
 	}
 
-	obtenerUno(req, res) {
-		const _id = req.params._id
+	async obtenerUno(req, res) {
+		const data = req.params // {_id: 'ccccc'}
+
+		const result = await this.modelo.findOne(data)
+
+		res
+			.status(httpStatus.OK)
+			.json({
+				status: httpStatus.OK,
+				message: "Document",
+				result
+			})
 
 	}
 
@@ -32,9 +44,9 @@ class GenericoController {
 		await usuario.save()
 
 		res
-			.status(201)
+			.status(httpStatus.CREATED)
 			.json({
-				status: 200,
+				status: httpStatus.CREATED,
 				message: "Usuario agregado"
 			})
 	}
