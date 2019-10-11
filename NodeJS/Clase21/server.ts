@@ -4,6 +4,10 @@ import * as http from "http"
 import * as bodyParser from "body-parser"
 import { RouterAlumnos, RouterUsuarios } from "./routes"
 import { inicializarBaseDatos } from "./services/database.service";
+import { generalError, pathNotFound } from "./handlers/errors.handler"
+
+const yenv = require("yenv")
+const env = yenv()
 
 let httpServer: http.Server
 let app = express()
@@ -32,7 +36,10 @@ const inicializar = (): Promise<any> => {
 		app.use("/usuarios", RouterUsuarios)
 		app.use("/alumnos", RouterAlumnos)
 
-		httpServer.listen(3000)
+		app.use(pathNotFound)
+		app.use(generalError)
+
+		httpServer.listen(env.PORT)
 			.on("listening", () => resolve())
 			.on("error", err => reject(err))
 	})

@@ -1,3 +1,6 @@
-const connectionString = `mongodb+srv://usuario-recetas:1234567890@cluster0-2a0hw.mongodb.net/BD_RECETAS?retryWrites=true&w=majority`
+const yenv = require("yenv")
+const env = yenv()
+
+const connectionString = `mongodb+srv://${env.DB.USER}:${env.DB.PWD}@${env.DB.HOST}/${env.DB.NAME}?retryWrites=true&w=majority`
 
 export { connectionString }
