@@ -47,7 +47,7 @@ class GenericoController {
 			.status(httpStatus.CREATED)
 			.json({
 				status: httpStatus.CREATED,
-				message: "Usuario agregado"
+				message: "Document added"
 			})
 	}
 
