@@ -2,6 +2,7 @@ import GenericoController from "./generico.controller";
 import { Usuario } from '../models';
 import httpStatus = require("http-status-codes")
 import bcrypt = require("bcrypt")
+import { crearToken } from "../services/token.service";
 
 class Controller extends GenericoController {
 	constructor() {
@@ -17,12 +18,14 @@ class Controller extends GenericoController {
 			const coincidencia = await bcrypt.compare(data.contrasena, usuario.contrasena)
 
 			if (coincidencia) {
+				const token = crearToken(usuario._id, usuario.roles)
+
 				res
 					.status(httpStatus.OK)
 					.json({
 						status: httpStatus.OK,
 						results: {
-							token: "abcdddkekekekekekek"
+							token
 						}
 					})
 			} else {
