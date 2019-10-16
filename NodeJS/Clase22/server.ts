@@ -2,10 +2,9 @@ import express = require("express")
 import { Request } from "express"
 import * as http from "http"
 import * as bodyParser from "body-parser"
-import { RouterAlumnos, RouterUsuarios } from "./routes"
+import { RouterAlumnos, RouterUsuarios, RouterRoles } from "./routes"
 import { inicializarBaseDatos } from "./services/database.service";
 import { generalError, pathNotFound } from "./handlers/errors.handler"
-
 
 const yenv = require("yenv")
 const env = yenv()
@@ -36,6 +35,7 @@ const inicializar = (): Promise<any> => {
 
 		app.use("/usuarios", RouterUsuarios)
 		app.use("/alumnos", RouterAlumnos)
+		app.use("/roles", RouterRoles)
 
 		app.use(pathNotFound)
 		app.use(generalError)

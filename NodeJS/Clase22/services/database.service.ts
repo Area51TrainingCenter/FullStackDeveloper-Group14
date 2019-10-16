@@ -17,6 +17,7 @@ const inicializarBaseDatos = async () => {
 			console.log("Conectado a Mongo")
 
 			require("../models").Usuario
+			require("../models").Rol
 
 			resolve()
 		})
