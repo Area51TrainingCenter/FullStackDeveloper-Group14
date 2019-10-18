@@ -48,6 +48,7 @@ class Controller extends GenericoController {
 
 	async insertar(req, res) {
 		const data = req.body
+		console.log(data)
 
 		data.contrasena = await bcrypt.hash(data.contrasena, 10)
 

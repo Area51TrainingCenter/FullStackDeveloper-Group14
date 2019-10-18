@@ -42,8 +42,26 @@ const authentication = (req, res, next) => {
 	}
 }
 
-const authorization = (req, res, next) => {
+const authorization = (...rolesPermitidos) => {
+	return (req, res, next) => {
+		const rolesUsuario = res.locals.map(rol => rol.nombre)
 
+		let permitido = false
+		rolesUsuario.forEach(rol => {
+			if (rolesPermitidos.indexOf(rol) > -1) permitido = true
+		})
+
+		if (permitido) {
+			next()
+		} else {
+			res
+				.status(httpStatus.FORBIDDEN)
+				.json({
+					status: httpStatus.FORBIDDEN,
+					message: "Forbidden resource"
+				})
+		}
+	}
 }
 
-export { authentication }
+export { authentication, authorization }

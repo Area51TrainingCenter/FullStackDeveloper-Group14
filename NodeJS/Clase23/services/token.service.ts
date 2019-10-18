@@ -9,7 +9,7 @@ const crearToken = (_id, roles) => {
 		_id,
 		roles,
 		iat: moment().unix(),    // Date.now()
-		exp: moment().add(60, "seconds").unix()
+		exp: moment().add(1, "hours").unix()
 	}
 
 	const token = jwt.encode(payload, env.KEY_SECRET)

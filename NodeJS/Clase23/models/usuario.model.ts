@@ -1,7 +1,10 @@
 const mongoose = require("mongoose")
 
 const esquema = new mongoose.Schema({
-	nombre: String,
+	nombre: {
+		type: String,
+		defaultTo: "Desconocido"
+	},
 	apellido: String,
 	correo: {
 		type: String,
@@ -16,6 +19,7 @@ const esquema = new mongoose.Schema({
 		trim: true,
 		required: true
 	},
+	cv: String,
 	roles: [
 		{
 			type: mongoose.Schema.ObjectId,

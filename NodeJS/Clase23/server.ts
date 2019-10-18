@@ -21,7 +21,7 @@ const inicializar = (): Promise<any> => {
 		httpServer = http.createServer(app)
 
 		app.use(bodyParser.json())
-		app.use(bodyParser.urlencoded({ extended: false }))
+		app.use(bodyParser.urlencoded({ extended: true }))
 
 		app.use("/users", (req: RequestApp, res, next) => {
 			req.estaAutenticado = true
